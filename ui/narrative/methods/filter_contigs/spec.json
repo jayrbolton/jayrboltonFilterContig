@@ -46,12 +46,12 @@
                 },
                 {
                     "input_parameter": "assembly_ref",
-                    "target_type_transform": "resolved-ref",
-                    "target_argument_position": 1
+                    "target_property": "assembly_ref",
+                    "target_type_transform": "resolved-ref"
                 },
                 {
                     "input_parameter": "min_length",
-                    "target_argument_position": 1
+                    "target_property": "min_length"
                 }
             ],
         "output_mapping": [
