@@ -1,7 +1,7 @@
 #
 # define display information
 #
-name: Contig Filter
+name: jayrbolton Contig Filter
 
 tooltip: |
     Filter out contigs below a user-defined minimum length
