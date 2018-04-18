@@ -21,31 +21,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("com.googlecode.jsonschema2pojo")
 @JsonPropertyOrder({
-    "min_length",
-    "assembly_ref"
+    "assembly_ref",
+    "min_length"
 })
 public class ContigFilterParams {
 
-    @JsonProperty("min_length")
-    private Long minLength;
     @JsonProperty("assembly_ref")
     private String assemblyRef;
+    @JsonProperty("min_length")
+    private Long minLength;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("min_length")
-    public Long getMinLength() {
-        return minLength;
-    }
-
-    @JsonProperty("min_length")
-    public void setMinLength(Long minLength) {
-        this.minLength = minLength;
-    }
-
-    public ContigFilterParams withMinLength(Long minLength) {
-        this.minLength = minLength;
-        return this;
-    }
 
     @JsonProperty("assembly_ref")
     public String getAssemblyRef() {
@@ -62,6 +47,21 @@ public class ContigFilterParams {
         return this;
     }
 
+    @JsonProperty("min_length")
+    public Long getMinLength() {
+        return minLength;
+    }
+
+    @JsonProperty("min_length")
+    public void setMinLength(Long minLength) {
+        this.minLength = minLength;
+    }
+
+    public ContigFilterParams withMinLength(Long minLength) {
+        this.minLength = minLength;
+        return this;
+    }
+
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
@@ -74,7 +74,7 @@ public class ContigFilterParams {
 
     @Override
     public String toString() {
-        return ((((((("ContigFilterParams"+" [minLength=")+ minLength)+", assemblyRef=")+ assemblyRef)+", additionalProperties=")+ additionalProperties)+"]");
+        return ((((((("ContigFilterParams"+" [assemblyRef=")+ assemblyRef)+", minLength=")+ minLength)+", additionalProperties=")+ additionalProperties)+"]");
     }
 
 }

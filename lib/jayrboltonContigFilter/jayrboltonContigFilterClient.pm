@@ -123,8 +123,8 @@ $workspace_name is a string
 $params is a jayrboltonContigFilter.ContigFilterParams
 $return is a jayrboltonContigFilter.ContigFilterResults
 ContigFilterParams is a reference to a hash where the following keys are defined:
-	min_length has a value which is an int
 	assembly_ref has a value which is a string
+	min_length has a value which is an int
 ContigFilterResults is a reference to a hash where the following keys are defined:
 	report_name has a value which is a string
 	report_ref has a value which is a string
@@ -142,8 +142,8 @@ $workspace_name is a string
 $params is a jayrboltonContigFilter.ContigFilterParams
 $return is a jayrboltonContigFilter.ContigFilterResults
 ContigFilterParams is a reference to a hash where the following keys are defined:
-	min_length has a value which is an int
 	assembly_ref has a value which is a string
+	min_length has a value which is an int
 ContigFilterResults is a reference to a hash where the following keys are defined:
 	report_name has a value which is a string
 	report_ref has a value which is a string
@@ -315,8 +315,8 @@ Input parameters
 
 <pre>
 a reference to a hash where the following keys are defined:
-min_length has a value which is an int
 assembly_ref has a value which is a string
+min_length has a value which is an int
 
 </pre>
 
@@ -325,8 +325,8 @@ assembly_ref has a value which is a string
 =begin text
 
 a reference to a hash where the following keys are defined:
-min_length has a value which is an int
 assembly_ref has a value which is a string
+min_length has a value which is an int
 
 
 =end text

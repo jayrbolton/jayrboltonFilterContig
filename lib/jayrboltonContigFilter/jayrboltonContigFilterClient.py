@@ -37,8 +37,8 @@ class jayrboltonContigFilter(object):
         """
         :param workspace_name: instance of String
         :param params: instance of type "ContigFilterParams" (Input
-           parameters) -> structure: parameter "min_length" of Long,
-           parameter "assembly_ref" of String
+           parameters) -> structure: parameter "assembly_ref" of String,
+           parameter "min_length" of Long
         :returns: instance of type "ContigFilterResults" (Output results) ->
            structure: parameter "report_name" of String, parameter
            "report_ref" of String, parameter "filtered_assembly_ref" of
