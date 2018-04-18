@@ -33,6 +33,22 @@ class jayrboltonContigFilter(object):
             trust_all_ssl_certificates=trust_all_ssl_certificates,
             auth_svc=auth_svc)
 
+    def filter_contigs(self, workspace_name, params, context=None):
+        """
+        :param workspace_name: instance of String
+        :param params: instance of type "ContigFilterParams" (Input
+           parameters) -> structure: parameter "min_length" of Long,
+           parameter "assembly_ref" of String
+        :returns: instance of type "ContigFilterResults" (Output results) ->
+           structure: parameter "report_name" of String, parameter
+           "report_ref" of String, parameter "filtered_assembly_ref" of
+           String, parameter "n_total" of Long, parameter "n_remaining" of
+           Long
+        """
+        return self._client.call_method(
+            'jayrboltonContigFilter.filter_contigs',
+            [workspace_name, params], self._service_ver, context)
+
     def status(self, context=None):
         return self._client.call_method('jayrboltonContigFilter.status',
                                         [], self._service_ver, context)

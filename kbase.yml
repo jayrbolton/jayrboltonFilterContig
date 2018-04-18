@@ -2,7 +2,7 @@ module-name:
     jayrboltonContigFilter
 
 module-description:
-    A KBase module
+    Filter out contigs in a genome assembly that are below a threshold length.
 
 service-language:
     python

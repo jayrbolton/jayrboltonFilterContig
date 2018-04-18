@@ -3,7 +3,6 @@ import unittest
 import os  # noqa: F401
 import json  # noqa: F401
 import time
-import requests
 
 from os import environ
 try:
@@ -75,15 +74,35 @@ class jayrboltonContigFilterTest(unittest.TestCase):
     def getContext(self):
         return self.__class__.ctx
 
-    # NOTE: According to Python unittest naming rules test method names should start from 'test'. # noqa
-    def test_your_method(self):
-        # Prepare test objects in workspace if needed using
-        # self.getWsClient().save_objects({'workspace': self.getWsName(),
-        #                                  'objects': []})
-        #
-        # Run your method by
-        # ret = self.getImpl().your_method(self.getContext(), parameters...)
-        #
-        # Check returned data with
-        # self.assertEqual(ret[...], ...) or other unittest methods
-        pass
+    def test_filter_contigs(self):
+        ref = "14672/2/1"
+        params = {
+            'assembly_ref': ref,
+            'min_length': 200000
+        }
+        result = self.getImpl().filter_contigs(self.getContext(), self.getWsName(), params)
+        self.assertEqual(result[0]['n_total'], 2)
+        self.assertEqual(result[0]['n_remaining'], 1)
+        self.assertTrue(len(result[0]['filtered_assembly_ref']))
+        self.assertTrue(len(result[0]['report_name']))
+        self.assertTrue(len(result[0]['report_ref']))
+
+    def test_invalid_params(self):
+        impl = self.getImpl()
+        ctx = self.getContext()
+        ws = self.getWsName()
+        # Missing assembly ref
+        with self.assertRaises(ValueError):
+            impl.filter_contigs(ctx, ws, {'min_length': 100})
+        # Missing min length
+        with self.assertRaises(ValueError):
+            impl.filter_contigs(ctx, ws, {'assembly_ref': 'x'})
+        # Min length is negative
+        with self.assertRaises(ValueError):
+            impl.filter_contigs(ctx, ws, {'assembly_ref': 'x', 'min_length': -1})
+        # Min length is wrong type
+        with self.assertRaises(ValueError):
+            impl.filter_contigs(ctx, ws, {'assembly_ref': 'x', 'min_length': 'x'})
+        # Assembly ref is wrong type
+        with self.assertRaises(ValueError):
+            impl.filter_contigs(ctx, ws, {'assembly_ref': 1, 'min_length': 1})
