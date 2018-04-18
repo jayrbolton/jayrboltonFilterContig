@@ -78,9 +78,10 @@ class jayrboltonContigFilterTest(unittest.TestCase):
         ref = "14672/2/1"
         params = {
             'assembly_ref': ref,
-            'min_length': 200000
+            'min_length': 200000,
+            'workspace_name': self.getWsName()
         }
-        result = self.getImpl().filter_contigs(self.getContext(), self.getWsName(), params)
+        result = self.getImpl().filter_contigs(self.getContext(), params)
         self.assertEqual(result[0]['n_total'], 2)
         self.assertEqual(result[0]['n_remaining'], 1)
         self.assertTrue(len(result[0]['filtered_assembly_ref']))
@@ -93,16 +94,19 @@ class jayrboltonContigFilterTest(unittest.TestCase):
         ws = self.getWsName()
         # Missing assembly ref
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'min_length': 100})
+            impl.filter_contigs(ctx, {'min_length': 100, 'workspace_name': ws})
         # Missing min length
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'assembly_ref': 'x'})
+            impl.filter_contigs(ctx, {'assembly_ref': 'x', 'workspace_name': ws})
+        # Missing ws name
+        with self.assertRaises(ValueError):
+            impl.filter_contigs(ctx, {'min_length': 100, 'assembly_ref': 'x'})
         # Min length is negative
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'assembly_ref': 'x', 'min_length': -1})
+            impl.filter_contigs(ctx, {'assembly_ref': 'x', 'min_length': -1, 'workspace_name': ws})
         # Min length is wrong type
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'assembly_ref': 'x', 'min_length': 'x'})
+            impl.filter_contigs(ctx, {'assembly_ref': 'x', 'min_length': 'x', 'workspace_name': ws})
         # Assembly ref is wrong type
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'assembly_ref': 1, 'min_length': 1})
+            impl.filter_contigs(ctx, {'assembly_ref': 1, 'min_length': 1, 'workspace_name': ws})

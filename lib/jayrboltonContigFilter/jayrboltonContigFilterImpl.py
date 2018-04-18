@@ -38,7 +38,6 @@ class jayrboltonContigFilter:
         #END_CONSTRUCTOR
         pass
 
-
     def filter_contigs(self, ctx, workspace_name, params):
         """
         :param workspace_name: instance of String
@@ -54,13 +53,14 @@ class jayrboltonContigFilter:
         # ctx is the context object
         # return variables are: returnVal
         #BEGIN filter_contigs
-        for name in ['min_length', 'assembly_ref']:
+        for name in ['min_length', 'assembly_ref', 'workspace_name']:
             if name not in params:
                 raise ValueError('Parameter "' + name + '" is required but missing')
         if not isinstance(params['min_length'], int) or (params['min_length'] < 0):
             raise ValueError('Min length must be a non-negative integer')
         if not isinstance(params['assembly_ref'], basestring) or not len(params['assembly_ref']):
             raise ValueError('Pass in a valid assembly reference string')
+        ws_name = params['workspace_name']
         assembly_util = AssemblyUtil(self.callback_url)
         file = assembly_util.get_assembly_as_fasta({'ref': params['assembly_ref']})
         # Parse the downloaded file in FASTA format
@@ -83,7 +83,7 @@ class jayrboltonContigFilter:
         # Upload the filtered data to the workspace
         new_ref = assembly_util.save_assembly_from_fasta({
             'file': {'path': filtered_path},
-            'workspace_name': workspace_name,
+            'workspace_name': ws_name,
             'assembly_name': file['assembly_name']
         })
         # Create an output summary message for the report
@@ -104,7 +104,7 @@ class jayrboltonContigFilter:
         kbase_report = KBaseReport(self.callback_url)
         report = kbase_report.create({
             'report': report_data,
-            'workspace_name': workspace_name
+            'workspace_name': ws_name
         })
         # Return the report reference and name in our results
         returnVal = {
@@ -122,6 +122,7 @@ class jayrboltonContigFilter:
                              'returnVal is not type dict as required.')
         # return the results
         return [returnVal]
+
     def status(self, ctx):
         #BEGIN_STATUS
         returnVal = {'state': "OK",

@@ -6,6 +6,7 @@ module jayrboltonContigFilter {
     /* Input parameters */
     typedef structure {
         string assembly_ref;
+        string workspace_name;
         int min_length;
     } ContigFilterParams;
 
@@ -18,6 +19,6 @@ module jayrboltonContigFilter {
         int n_remaining;
     } ContigFilterResults;
 
-    funcdef filter_contigs(string workspace_name, ContigFilterParams params)
+    funcdef filter_contigs(ContigFilterParams params)
         returns (ContigFilterResults) authentication required;
 };
