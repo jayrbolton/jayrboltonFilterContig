@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #BEGIN_HEADER
 from AssemblyUtil.AssemblyUtilClient import AssemblyUtil
-from KBaseReport.KBaseReportClient import KBaseReport
+from KBaseReportPy.KBaseReportPyClient import KBaseReportPy
 import os
 from Bio import SeqIO
 #END_HEADER
