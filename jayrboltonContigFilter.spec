@@ -5,8 +5,8 @@ A KBase module: jayrboltonContigFilter
 module jayrboltonContigFilter {
     /* Input parameters */
     typedef structure {
-        string assembly_ref;
         string workspace_name;
+        string assembly_ref;
         int min_length;
     } ContigFilterParams;
 

@@ -38,7 +38,7 @@ class jayrboltonContigFilter:
         #END_CONSTRUCTOR
         pass
 
-    def filter_contigs(self, ctx, workspace_name, params):
+    def filter_contigs(self, ctx, params):
         """
         :param workspace_name: instance of String
         :param params: instance of type "ContigFilterParams" (Input
@@ -98,14 +98,12 @@ class jayrboltonContigFilter:
             'objects_created': [
                 {'ref': new_ref, 'description': 'Filtered contigs'}
             ],
-            'text_message': text_message
+            'message': text_message,
+            'workspace_name': ws_name
         }
         # Initialize the report
-        kbase_report = KBaseReport(self.callback_url)
-        report = kbase_report.create({
-            'report': report_data,
-            'workspace_name': ws_name
-        })
+        kbase_report = KBaseReportPy(self.callback_url)
+        report = kbase_report.create_extended_report(report_data)
         # Return the report reference and name in our results
         returnVal = {
             'report_ref': report['ref'],
