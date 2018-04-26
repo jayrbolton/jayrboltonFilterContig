@@ -94,10 +94,34 @@ class jayrboltonContigFilter:
             str(n_total)
         ])
         # Data for creating the report, referencing the assembly we uploaded
+        html_dir = os.path.join(self.scratch, 'html')
+        html_index_path = os.path.join(html_dir, 'index.html')
+        file_path = os.path.join(self.scratch, 'myfile.txt')
+        with open(file_path, 'w') as f:
+            f.write('hello world')
+        os.mkdir(html_dir)
+        with open(html_index_path, 'w') as f:
+            f.write('<p><b>hello world</b></p>')
+        html_links = [
+            {
+                'path': html_dir,
+                'name': 'HTML Report Test',
+                'description': 'Sample description'
+            }
+        ]
+        file_links = [
+            {
+                'path': file_path,
+                'name': 'Linked file test',
+                'description': 'Sample file description'
+            }
+        ]
         report_data = {
             'objects_created': [
                 {'ref': new_ref, 'description': 'Filtered contigs'}
             ],
+            'html_links': html_links,
+            'file_links': file_links,
             'message': text_message,
             'workspace_name': ws_name
         }
