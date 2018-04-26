@@ -102,20 +102,18 @@ class jayrboltonContigFilter:
         os.mkdir(html_dir)
         with open(html_index_path, 'w') as f:
             f.write('<p><b>hello world</b></p>')
-        html_links = [
-            {
-                'path': html_dir,
-                'name': 'html',
-                'description': 'Sample description'
-            }
-        ]
-        file_links = [
-            {
-                'path': file_path,
-                'name': 'Linked file test',
-                'description': 'Sample file description'
-            }
-        ]
+        print('xyz1', os.listdir(html_dir))
+        print('xyz2', os.listdir(self.scratch))
+        html_links = [{
+            'path': html_index_path,  # html_dir,
+            'name': 'html',
+            'description': 'Sample description'
+        }]
+        file_links = [{
+            'path': file_path,
+            'name': 'Linked file test',
+            'description': 'Sample file description'
+        }]
         report_data = {
             'objects_created': [
                 {'ref': new_ref, 'description': 'Filtered contigs'}
