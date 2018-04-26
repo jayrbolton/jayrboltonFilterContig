@@ -105,7 +105,7 @@ class jayrboltonContigFilter:
         html_links = [
             {
                 'path': html_dir,
-                'name': 'HTML Report Test',
+                'name': 'html',
                 'description': 'Sample description'
             }
         ]
@@ -123,7 +123,8 @@ class jayrboltonContigFilter:
             'html_links': html_links,
             'file_links': file_links,
             'message': text_message,
-            'workspace_name': ws_name
+            'workspace_name': ws_name,
+            'direct_html_link_index': 0
         }
         # Initialize the report
         kbase_report = KBaseReportPy(self.callback_url)
