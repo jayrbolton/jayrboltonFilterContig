@@ -105,7 +105,7 @@ class jayrboltonContigFilter:
         print('xyz1', os.listdir(html_dir))
         print('xyz2', os.listdir(self.scratch))
         html_links = [{
-            'path': html_index_path,  # html_dir,
+            'path': html_dir,
             'name': 'html',
             'description': 'Sample description'
         }]
