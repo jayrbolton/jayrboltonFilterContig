@@ -111,9 +111,9 @@ class jayrboltonContigFilter:
         }]
         file_links = [{
             'path': file_path,
-            'name': 'Linked file test',
+            'name': 'file.txt',
             'description': 'Sample file description'
-        }]
+        }] + html_links
         report_data = {
             'objects_created': [
                 {'ref': new_ref, 'description': 'Filtered contigs'}
