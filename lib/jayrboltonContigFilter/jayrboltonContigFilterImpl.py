@@ -120,13 +120,14 @@ class jayrboltonContigFilter:
             ],
             'html_links': html_links,
             'file_links': file_links,
+            'direct_html': '<p>Hello</p>',
             'message': text_message,
             'workspace_name': ws_name,
             'direct_html_link_index': 0
         }
         # Initialize the report
         kbase_report = KBaseReportPy(self.callback_url)
-        report = kbase_report.create_extended_report(report_data)
+        report = kbase_report.create(report_data)
         # Return the report reference and name in our results
         returnVal = {
             'report_ref': report['ref'],
