@@ -127,7 +127,7 @@ class jayrboltonContigFilter:
         }
         # Initialize the report
         kbase_report = KBaseReportPy(self.callback_url)
-        report = kbase_report.create(report_data)
+        report = kbase_report.create_extended_report(report_data)
         # Return the report reference and name in our results
         returnVal = {
             'report_ref': report['ref'],
