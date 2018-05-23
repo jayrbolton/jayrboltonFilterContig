@@ -114,31 +114,29 @@ class jayrboltonContigFilter:
             'name': 'file.txt',
             'description': 'Sample file description'
         }] + html_links
-        # # Extended report
-        # report_data = {
-        #     'objects_created': [
-        #         {'ref': new_ref, 'description': 'Filtered contigs'}
-        #     ],
-        #     'html_links': html_links,
-        #     'file_links': file_links,
-        #     'warnings': ['warning 1', 'warning 2'],
-        #     'report_object_name': 'my_report',
-        #     'direct_html': '<p>Hello</p>',
-        #     'message': text_message,
-        #     'workspace_name': ws_name,
-        #     'direct_html_link_index': 0,
-        #     'html_window_height': 800,
-        #     'summary_window_height': 800
-        # }
-        # Simple report
+        # Extended report
         report_data = {
-            'report': {
-                'text_message': 'My simple report text message',
-                'warnings': ['warning 1', 'warning 2'],
-                'objects_created': [{'ref': new_ref, 'description': 'filtered contigs'}]
-            },
-            'workspace_name': ws_name
+            'objects_created': [{'ref': new_ref, 'description': 'Filtered contigs'}],
+            'html_links': html_links,
+            'file_links': file_links,
+            'warnings': ['warning 1', 'warning 2'],
+            'report_object_name': 'my_report',
+            'direct_html': '<p>Hello</p>',
+            'message': text_message,
+            'workspace_name': ws_name,
+            'direct_html_link_index': 0,
+            'html_window_height': 800,
+            'summary_window_height': 800
         }
+        # # Simple report
+        # report_data = {
+        #     'report': {
+        #         'text_message': 'My simple report text message',
+        #         'warnings': ['warning 1', 'warning 2'],
+        #         'objects_created': [{'ref': new_ref, 'description': 'filtered contigs'}]
+        #     },
+        #     'workspace_name': ws_name
+        # }
         # Initialize the report
         kbase_report = KBaseReportPy(self.callback_url)
         report = kbase_report.create(report_data)
