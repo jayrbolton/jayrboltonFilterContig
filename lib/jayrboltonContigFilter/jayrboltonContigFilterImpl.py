@@ -120,10 +120,14 @@ class jayrboltonContigFilter:
             ],
             'html_links': html_links,
             'file_links': file_links,
+            'warnings': ['warning 1', 'warning 2'],
+            'report_object_name': 'my_report',
             'direct_html': '<p>Hello</p>',
             'message': text_message,
             'workspace_name': ws_name,
-            'direct_html_link_index': 0
+            'direct_html_link_index': 0,
+            'html_window_height': 800,
+            'summary_window_height': 800
         }
         # Initialize the report
         kbase_report = KBaseReportPy(self.callback_url)
