@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #BEGIN_HEADER
 from AssemblyUtil.AssemblyUtilClient import AssemblyUtil
-from KBaseReportPy.KBaseReportPyClient import KBaseReportPy
+from KBaseReport.KBaseReportClient import KBaseReport
 import os
 from Bio import SeqIO
 #END_HEADER
@@ -138,7 +138,7 @@ class jayrboltonContigFilter:
         #     'workspace_name': ws_name
         # }
         # Initialize the report
-        kbase_report = KBaseReportPy(self.callback_url)
+        kbase_report = KBaseReport(self.callback_url)
         report = kbase_report.create_extended_report(report_data)
         # Return the report reference and name in our results
         returnVal = {
